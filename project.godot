@@ -26,7 +26,7 @@ project/assembly_name="netengine5 Virtual Camera Test"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/netengine5/net.bobbo.character/plugin.cfg", "res://addons/netengine5/net.bobbo.dialog-graph/plugin.cfg", "res://addons/netengine5/net.bobbo.interactable/plugin.cfg", "res://addons/netengine5/net.bobbo.item/plugin.cfg", "res://addons/netengine5/net.bobbo.knowledge/plugin.cfg", "res://addons/netengine5/net.bobbo.mouse-look-3d/plugin.cfg", "res://addons/netengine5/net.bobbo.npc/plugin.cfg", "res://addons/netengine5/net.bobbo.player-controller/plugin.cfg", "res://addons/netengine5/net.bobbo.player-model/plugin.cfg", "res://addons/netengine5/net.bobbo.resource-field/plugin.cfg")
+enabled=PackedStringArray("res://addons/netengine5/net.bobbo.character/plugin.cfg", "res://addons/netengine5/net.bobbo.dialog-graph/plugin.cfg", "res://addons/netengine5/net.bobbo.interactable/plugin.cfg", "res://addons/netengine5/net.bobbo.item/plugin.cfg", "res://addons/netengine5/net.bobbo.knowledge/plugin.cfg", "res://addons/netengine5/net.bobbo.mouse-look-3d/plugin.cfg", "res://addons/netengine5/net.bobbo.npc/plugin.cfg", "res://addons/netengine5/net.bobbo.player-controller/plugin.cfg", "res://addons/netengine5/net.bobbo.player-model/plugin.cfg", "res://addons/netengine5/net.bobbo.resource-field/plugin.cfg", "res://addons/netengine5/net.bobbo.virtual-camera/plugin.cfg")
 
 [input]
 
