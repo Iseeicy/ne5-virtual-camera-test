@@ -1,12 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0dhor5dsr3r4"]
+[gd_scene load_steps=5 format=3 uid="uid://c0dhor5dsr3r4"]
 
 [ext_resource type="PackedScene" uid="uid://da8f6n0h37ibo" path="res://maps/test_map/test_map.tscn" id="1_i86jl"]
 [ext_resource type="PackedScene" uid="uid://b4nwduau6uxjr" path="res://addons/netengine5/net.bobbo.player-controller/player_controller.tscn" id="2_6vwec"]
 [ext_resource type="PackedScene" uid="uid://cf2idensb8y1s" path="res://ui/ui.tscn" id="3_q0e8w"]
-[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.npc/npc_agent_3d.gd" id="4_oqbpm"]
-[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.character/character_definition.gd" id="5_soehu"]
-[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.player-model/player_model.gd" id="6_fyyy7"]
-[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.item/item_inventory.gd" id="7_uu75k"]
 
 [sub_resource type="Environment" id="Environment_bfew5"]
 background_mode = 1
@@ -14,13 +10,6 @@ background_color = Color(0.4, 0.4, 0.4, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.839216, 0.839216, 0.839216, 1)
 ssao_enabled = true
-
-[sub_resource type="Resource" id="Resource_0lbri"]
-script = ExtResource("5_soehu")
-name = "RUNTIME NPCAgent3D"
-default_data = {}
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jbt73"]
 
 [node name="Main" type="Node3D"]
 
@@ -38,27 +27,3 @@ shadow_enabled = true
 shadow_blur = 0.1
 
 [node name="UI" parent="." instance=ExtResource("3_q0e8w")]
-
-[node name="NPCAgent3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("body_node", "head_node", "inventory", "playermodel", "playermodel_pivot")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -4)
-script = ExtResource("4_oqbpm")
-character = SubResource("Resource_0lbri")
-body_node = NodePath(".")
-head_node = NodePath("Head")
-inventory = NodePath("ItemInventory")
-playermodel = NodePath("ModelPivot/PlayerModel")
-playermodel_pivot = NodePath("ModelPivot")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCAgent3D"]
-shape = SubResource("CapsuleShape3D_jbt73")
-
-[node name="ModelPivot" type="Node3D" parent="NPCAgent3D"]
-
-[node name="PlayerModel" type="Node3D" parent="NPCAgent3D/ModelPivot"]
-script = ExtResource("6_fyyy7")
-
-[node name="Head" type="Node3D" parent="NPCAgent3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="ItemInventory" type="Node" parent="NPCAgent3D"]
-script = ExtResource("7_uu75k")
