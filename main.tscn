@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0dhor5dsr3r4"]
+[gd_scene load_steps=11 format=3 uid="uid://c0dhor5dsr3r4"]
 
 [ext_resource type="PackedScene" uid="uid://da8f6n0h37ibo" path="res://maps/test_map/test_map.tscn" id="1_i86jl"]
+[ext_resource type="Script" path="res://addons/netengine5/net.bobbo.virtual-camera/camera_transition.gd" id="3_n1lq8"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.virtual-camera/entity_camera_3d.gd" id="4_lawhj"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.virtual-camera/virtual_camera_3d.gd" id="4_ljq0g"]
 
@@ -10,6 +11,12 @@ background_color = Color(0.4, 0.4, 0.4, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.839216, 0.839216, 0.839216, 1)
 ssao_enabled = true
+
+[sub_resource type="Resource" id="Resource_fdr32"]
+script = ExtResource("3_n1lq8")
+duration = 2.0
+transition_type = 1
+ease_type = 1
 
 [sub_resource type="Curve3D" id="Curve3D_wgt87"]
 _data = {
@@ -77,6 +84,7 @@ shadow_blur = 0.1
 
 [node name="EntityCamera3D" type="Node3D" parent="."]
 script = ExtResource("4_lawhj")
+default_transition = SubResource("Resource_fdr32")
 
 [node name="Camera3D" type="Camera3D" parent="EntityCamera3D"]
 
