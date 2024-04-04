@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0dhor5dsr3r4"]
+[gd_scene load_steps=9 format=3 uid="uid://c0dhor5dsr3r4"]
 
 [ext_resource type="PackedScene" uid="uid://da8f6n0h37ibo" path="res://maps/test_map/test_map.tscn" id="1_i86jl"]
-[ext_resource type="PackedScene" uid="uid://b4nwduau6uxjr" path="res://addons/netengine5/net.bobbo.player-controller/player_controller.tscn" id="2_6vwec"]
-[ext_resource type="PackedScene" uid="uid://cf2idensb8y1s" path="res://ui/ui.tscn" id="3_q0e8w"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.virtual-camera/entity_camera_3d.gd" id="4_lawhj"]
 [ext_resource type="Script" path="res://addons/netengine5/net.bobbo.virtual-camera/virtual_camera_3d.gd" id="4_ljq0g"]
 
@@ -13,12 +11,61 @@ ambient_light_source = 2
 ambient_light_color = Color(0.839216, 0.839216, 0.839216, 1)
 ssao_enabled = true
 
+[sub_resource type="Curve3D" id="Curve3D_wgt87"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.89779, 3.72514, 3.45814, 0.180871, 0.476582, 1.32015, -0.180871, -0.476582, -1.32015, -7.57306, 2.57387, 1.53634, -1.03786, -0.937162, 1.43888, 1.03786, 0.937162, -1.43888, -7.13332, 4.32036, -1.67632, -1.9963, -0.16265, -0.84786, 1.9963, 0.16265, 0.84786, -0.946455, 4.0337, -5.77642, -1.13227, 0.135862, -0.802696, 1.13227, -0.135862, 0.802696, 3.30371, 2.61614, -3.19784, -0.908294, 0.363715, -1.00336, 0.908294, -0.363715, 1.00336, 5.0956, 3.31206, -0.340641, 0.544935, 0.328842, -0.170156, -0.544935, -0.328842, 0.170156, 0.678533, 4.70772, 3.62993, 0, 0, 0, 0, 0, 0, -3.89779, 3.72514, 3.45814),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="GDScript" id="GDScript_g7l8f"]
+script/source = "extends PathFollow3D
+
+@export var speed: float = 10
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	progress_ratio += delta * (speed / 100)
+"
+
+[sub_resource type="GDScript" id="GDScript_lhwkf"]
+script/source = "extends Node3D
+
+@export var focus_target: Node3D = null
+@export var distance: float = 10
+@export var speed: float = 10
+
+var total_time: float = 0
+var starting_pos: Vector3
+
+func _ready():
+	starting_pos = position
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	total_time += delta
+	position = starting_pos + lerp((Vector3.LEFT * distance), (Vector3.LEFT * -distance), sin(total_time * speed))
+
+	$VCam2.look_at(focus_target.global_position)
+"
+
+[sub_resource type="GDScript" id="GDScript_mb3or"]
+script/source = "extends Node
+
+var index: int = 0
+
+func _on_cycle_timer_timeout():
+	# Cycle through which cam is marked visible every time this tiemr goes off
+	var all_cams := VirtualCamera3D.get_all(get_tree())
+	index = (index + 1) % all_cams.size()
+	
+	for x in range(0, all_cams.size()):
+		all_cams[x].visible = x == index 
+"
+
 [node name="Main" type="Node3D"]
 
 [node name="test_map" parent="." instance=ExtResource("1_i86jl")]
-
-[node name="PlayerController" parent="." instance=ExtResource("2_6vwec")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bfew5")
@@ -28,18 +75,49 @@ transform = Transform3D(0.0318171, 0.903238, -0.427958, -0.399628, 0.403957, 0.8
 shadow_enabled = true
 shadow_blur = 0.1
 
-[node name="UI" parent="." instance=ExtResource("3_q0e8w")]
-
 [node name="EntityCamera3D" type="Node3D" parent="."]
 script = ExtResource("4_lawhj")
 
+[node name="Camera3D" type="Camera3D" parent="EntityCamera3D"]
+
 [node name="VCam1" type="Node3D" parent="."]
+transform = Transform3D(-0.0932745, 0.145411, -0.984965, 0, 0.989278, 0.146048, 0.99564, 0.0136225, -0.0922744, 1.3715, 2.29124, 5.57588)
 script = ExtResource("4_ljq0g")
 
-[node name="VCam2" type="Node3D" parent="."]
-script = ExtResource("4_ljq0g")
-main_priority = -29
+[node name="FlythroughNode" type="Node3D" parent="."]
 
-[node name="VCam3" type="Node3D" parent="."]
+[node name="Path3D" type="Path3D" parent="FlythroughNode"]
+curve = SubResource("Curve3D_wgt87")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="FlythroughNode/Path3D"]
+transform = Transform3D(0.463371, -0.237024, 0.853867, 0, 0.963555, 0.267473, -0.886155, -0.12394, 0.446488, -3.89779, 3.72514, 3.45814)
+rotation_mode = 2
+script = SubResource("GDScript_g7l8f")
+speed = 5.0
+
+[node name="VCam3" type="Node3D" parent="FlythroughNode/Path3D/PathFollow3D"]
 script = ExtResource("4_ljq0g")
 main_priority = 10
+
+[node name="FocusTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32324, 0, 0.416058)
+
+[node name="FocusThing" type="Node3D" parent="." node_paths=PackedStringArray("focus_target")]
+transform = Transform3D(-0.797563, -0.420161, 0.432849, 0, 0.717544, 0.696513, -0.603236, 0.555513, -0.572287, 9.33856, 7.91208, -7.93298)
+script = SubResource("GDScript_lhwkf")
+focus_target = NodePath("../FocusTarget")
+distance = 2.0
+speed = 0.5
+
+[node name="VCam2" type="Node3D" parent="FocusThing"]
+script = ExtResource("4_ljq0g")
+main_priority = 100
+
+[node name="CameraCycler" type="Node" parent="."]
+script = SubResource("GDScript_mb3or")
+
+[node name="CycleTimer" type="Timer" parent="CameraCycler"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="CameraCycler/CycleTimer" to="CameraCycler" method="_on_cycle_timer_timeout"]
