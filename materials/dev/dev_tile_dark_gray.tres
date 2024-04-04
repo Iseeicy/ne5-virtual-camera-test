@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bdi41cfk434xt"]
+
+[ext_resource type="Texture2D" uid="uid://cg7awvak82iup" path="res://materials/dev/dev_tile_dark_gray.png" id="1_oumyo"]
+
+[resource]
+albedo_texture = ExtResource("1_oumyo")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+uv1_world_triplanar = true
+texture_filter = 0

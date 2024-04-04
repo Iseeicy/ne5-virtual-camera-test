@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://da8f6n0h37ibo"]
+
+[ext_resource type="PackedScene" uid="uid://32dqkytq0p0y" path="res://maps/test_map/test_map.glb" id="1_ree22"]
+[ext_resource type="PackedScene" uid="uid://cib6ygetbvcnr" path="res://maps/test_map/test_machine.tscn" id="2_fhfmk"]
+
+[node name="test_map" instance=ExtResource("1_ree22")]
+
+[node name="TestMachine" parent="." index="4" instance=ExtResource("2_fhfmk")]
+
+[node name="MachineBody" parent="." index="5"]
+visible = false
+
+[node name="CollisionShape3D" parent="MachineBody/MachinePanel/ButtonBot/StaticBody3D" index="0"]
+disabled = true
+
+[node name="CollisionShape3D" parent="MachineBody/MachinePanel/ButtonTop/StaticBody3D" index="0"]
+disabled = true
+
+[node name="CollisionShape3D" parent="MachineBody/MachinePanel/StaticBody3D" index="0"]
+disabled = true
+
+[node name="LightPanel" parent="." index="6"]
+visible = false

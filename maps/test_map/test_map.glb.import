@@ -1,0 +1,198 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://32dqkytq0p0y"
+path="res://.godot/imported/test_map.glb-f42992d1d6b16b1a2f909a9b21813176.scn"
+
+[deps]
+
+source_file="res://maps/test_map/test_map.glb"
+dest_files=["res://.godot/imported/test_map.glb-f42992d1d6b16b1a2f909a9b21813176.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"blue": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dev/dev_tile_blue.tres"
+},
+"cyan": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dev/dev_tile_cyan.tres"
+},
+"dark_gray": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dev/dev_tile_dark_gray.tres"
+},
+"orange": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dev/dev_tile_orange.tres"
+},
+"red": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dev/dev_tile_red.tres"
+},
+"white": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dev/dev_tile_white.tres"
+},
+"yellow": {
+"use_external/enabled": true,
+"use_external/path": "res://materials/dev/dev_tile_yellow.tres"
+}
+},
+"nodes": {
+"PATH:Floor": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:LightPanel": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:MachineBody": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:MachineBody/MachinePanel": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:MachineBody/MachinePanel/ButtonBot": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:MachineBody/MachinePanel/ButtonTop": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Platform": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Platform_001": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Player": {
+"import/skip_import": true
+},
+"PATH:Ramp": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:RampPlat": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_001": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_002": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_003": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_004": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_005": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_006": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_007": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:RampPlat_008": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:Ramp_001": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Ramp_002": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Ramp_003": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Ramp_004": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Ramp_005": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Ramp_006": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Ramp_007": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Ramp_008": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:Steps": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:TunnelA": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:TunnelB": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:TunnelC": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:TunnelD": {
+"generate/physics": true,
+"physics/shape_type": 2
+},
+"PATH:WorldOrigin": {
+"import/skip_import": true
+},
+"PATH:WorldOrigin_001": {
+"import/skip_import": true
+}
+}
+}
+gltf/embedded_image_handling=0
