@@ -98,7 +98,7 @@ script = ExtResource("4_ljq0g")
 curve = SubResource("Curve3D_wgt87")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="FlythroughNode/Path3D"]
-transform = Transform3D(0.463371, -0.237024, 0.853867, 0, 0.963555, 0.267473, -0.886155, -0.12394, 0.446488, -3.89779, 3.72514, 3.45814)
+transform = Transform3D(0.463371, -0.237023, 0.853867, 0, 0.963555, 0.267472, -0.886155, -0.12394, 0.446488, -3.89779, 3.72514, 3.45814)
 rotation_mode = 2
 script = SubResource("GDScript_g7l8f")
 speed = 5.0
